@@ -67,6 +67,7 @@
 
 /* ——— страница кейса ——— */
 .pf-case-head{padding-top:var(--space-6);padding-bottom:var(--space-5)}
+.pf-case-back{display:inline-block;margin-bottom:var(--space-4)}
 .pf-case-h1{font-family:var(--font-mono);font-weight:var(--weight-display);text-transform:uppercase;font-size:var(--type-h1-case);line-height:var(--lh-h1);letter-spacing:var(--ls-display);max-width:22ch;padding-inline:var(--pf-side)}
 .pf-block{display:grid;grid-template-columns:repeat(var(--grid-columns),1fr);column-gap:var(--grid-gutter);row-gap:var(--space-3);padding:var(--space-5) var(--pf-side);border-top:var(--hairline) solid var(--border-hairline)}
 .pf-block__label{grid-column:1 / span 3}

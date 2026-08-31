@@ -51,6 +51,10 @@ function CaseScreen({ number = '01', onOpen, onHome }) {
     <div className="pf">
       <Header onFilter={undefined} href="#" onClick={onHome ? (e) => { e.preventDefault(); onHome(); } : undefined} />
       <section className="pf-case-head">
+        <Reveal index={0} className="pf-bleed">
+          <Meta as="a" mono className="pf-case-back" href="#"
+            onClick={onHome ? (e) => { e.preventDefault(); onHome(); } : undefined}>Назад к подборке</Meta>
+        </Reveal>
         <Reveal index={0}><h1 className="pf-case-h1">{c.h1}</h1></Reveal>
         <Reveal index={1} className="pf-bleed" style={{ marginTop: 'var(--space-6)' }}>
           <MetaRow number={c.number} name={c.client} stack={c.stack} />
