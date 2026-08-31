@@ -1,0 +1,24 @@
+:root{
+/* base — ровно семь значений, акцентного цвета нет by design */
+--pf-white:#FFFFFF;
+--pf-ink:#0E0E0E;
+--pf-gray-meta:#6B6B6B;
+--pf-gray-inactive:#B4B4B4;
+--pf-line:#E3E3E1;
+--pf-plinth:#F4F4F2;
+--pf-render:#E7E7E5;
+--pf-ink-ghost:#1F1F1F;
+
+/* semantic */
+--bg-page:var(--pf-white);
+--bg-inverse:var(--pf-ink);
+--text-primary:var(--pf-ink);
+--text-meta:var(--pf-gray-meta);
+--text-inactive:var(--pf-gray-inactive);
+--text-on-inverse:var(--pf-white);
+--text-ghost-on-inverse:var(--pf-ink-ghost);
+--border-hairline:var(--pf-line);
+--border-control:var(--pf-ink);
+--surface-plinth:var(--pf-plinth);
+--surface-render:var(--pf-render);
+}

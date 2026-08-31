@@ -1,0 +1,34 @@
+:root{
+/* families — два шрифта, никогда не смешиваются внутри одного блока */
+--font-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,monospace;
+--font-grotesk:"Golos Text",system-ui,-apple-system,sans-serif;
+
+/* роли */
+--font-display:var(--font-mono);   /* вордмарк, номера, H1 кейса, мета-имена */
+--font-body:var(--font-grotesk);   /* вся проза и подписи */
+
+/* размеры — разрыв масштаба: очень крупно или очень мелко */
+--type-display:clamp(48px,14vw,200px);
+--type-h1-case:clamp(28px,5.2vw,68px);
+--type-feed-title:clamp(19px,1.7vw,28px);
+--type-body:17px;
+--type-meta:11px;
+--type-nav:12px;
+
+/* метрики */
+--lh-display:0.9; /* @kind font */
+--lh-h1:1.02; /* @kind font */
+--lh-feed-title:1.15; /* @kind font */
+--lh-body:1.65; /* @kind font */
+--lh-meta:1.4; /* @kind font */
+--ls-display:-0.02em;
+--ls-meta:0.1em;
+--ls-nav:0.1em;
+--weight-body:400;
+--weight-feed-title:500;
+--weight-display:700;
+--measure-text:64ch;
+
+/* доля ширины одного знака вордмарка: 9 знаков × (0.6em − 0.02em трекинг) */
+--wordmark-ratio:5.22; /* @kind other */
+}

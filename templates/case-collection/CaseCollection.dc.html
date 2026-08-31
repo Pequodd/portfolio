@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Сборник кейсов" description="Главная сборника: липкий хедер, первый экран с вордмарком, лента кейсов, инверсный футер" -->
+<helmet><script src="./ds-base.js"></script></helmet>
+<div class="pf">
+<header class="pf-header"><a class="pf-header__mark" href="#">ПОРТФОЛИО</a><nav class="pf-filters"><button type="button" class="pf-pill" aria-pressed="true">Все</button><button type="button" class="pf-pill">Многостраничные</button><button type="button" class="pf-pill">Лендинги</button><button type="button" class="pf-pill">Tilda</button><button type="button" class="pf-pill">С нуля</button><button type="button" class="pf-pill">Редизайн</button></nav></header>
+<section class="pf-hero">
+<div class="pf-hero__row">
+<div class="pf-hero__lead pf-reveal" style="--pf-i:0"><p class="pf-text">Проектируем и собираем сайты: многостраничные, лендинги, каталоги. Ведём задачу от структуры и прототипа до готовой страницы, которую команда клиента дальше обновляет сама, без дизайнера.</p></div>
+<div class="pf-hero__meta pf-reveal" style="--pf-i:1"><div class="pf-meta pf-meta--ink">Подборка кейсов</div><div class="pf-meta">3 проекта · 2024—2025</div></div>
+</div>
+<div class="pf-hero__mark pf-reveal" style="--pf-i:2"><x-import component-from-global-scope="EditorialDesignSystem_8f642b.Wordmark" text="ПОРТФОЛИО" hint-size="100%,180px"></x-import></div>
+</section>
+<div class="pf-feed" style="padding-top:160px;padding-bottom:160px">
+<article class="pf-item pf-reveal" style="--pf-i:0"><a class="pf-item__link" href="#">
+<div class="pf-metarow"><span class="pf-meta pf-meta--mono pf-meta--ink">01 — Строительная компания</span><span class="pf-meta">Tilda · многостраничный · с нуля · 2024</span></div>
+<div class="pf-plinth"><div class="pf-ph" style="aspect-ratio:16/10"><span>обложка</span><span>1360×850</span></div></div>
+<h2 class="pf-item__title">Каталог объектов, который команда пополняет сама</h2>
+</a></article>
+<div class="pf-feed__pair">
+<article class="pf-item pf-reveal" style="--pf-i:0"><a class="pf-item__link" href="#">
+<div class="pf-metarow"><span class="pf-meta pf-meta--mono pf-meta--ink">02 — Агентство по подбору спикеров</span><span class="pf-meta">Tilda · многостраничный · редизайн · 2024</span></div>
+<div class="pf-plinth"><div class="pf-ph" style="aspect-ratio:16/10"><span>обложка</span><span>668×418</span></div></div>
+<h2 class="pf-item__title">Из стандартных блоков — в цельную визуальную систему</h2>
+</a></article>
+<article class="pf-item pf-reveal" style="--pf-i:1"><a class="pf-item__link" href="#">
+<div class="pf-metarow"><span class="pf-meta pf-meta--mono pf-meta--ink">03 — IT-подкаст</span><span class="pf-meta">лендинг · с нуля · 2025</span></div>
+<div class="pf-plinth"><div class="pf-ph" style="aspect-ratio:16/10"><span>обложка</span><span>668×418</span></div></div>
+<h2 class="pf-item__title">Медиа-проект с каталогом выпусков</h2>
+</a></article>
+</div>
+</div>
+<footer class="pf-footer">
+<p class="pf-footer__line">Расскажите про задачу — предложим, как её решить</p>
+<div class="pf-footer__row"><div class="pf-footer__contacts"><a href="#"><span class="pf-meta pf-meta--inverse">телеграм</span></a><a href="#"><span class="pf-meta pf-meta--inverse">почта</span></a></div><a class="pf-cta pf-cta--inverse" href="#">Написать в телеграм</a></div>
+</footer>
+</div>
+</x-dc>
+</body>
+</html>

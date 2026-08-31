@@ -1,0 +1,324 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          {
+            "group": [
+              "components/core/**",
+              "components/patterns/**",
+              "ui_kits/portfolio/**"
+            ],
+            "message": "Import design-system components from 'index.js', not component internals."
+          }
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      },
+      {
+        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:JetBrains Mono|Golos Text))/i]",
+        "message": "Font not provided by the design system. Available: JetBrains Mono, Golos Text."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='CaseBlock'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|children|index|className|style|key|ref|className|style|children)$/]",
+        "message": "<CaseBlock> doesn't accept that prop. Declared props: label, children, index, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='CaseShots'] > JSXAttribute > JSXIdentifier[name!=/^(?:variant|shots|index|className|style|key|ref|className|style|children)$/]",
+        "message": "<CaseShots> doesn't accept that prop. Declared props: variant, shots, index, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='CaseShots'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:wide|pair)$/]",
+        "message": "<CaseShots> variant must be one of 'wide' | 'pair'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='FeedItem'] > JSXAttribute > JSXIdentifier[name!=/^(?:number|name|stack|title|href|size|ratio|cover|index|className|style|key|ref|className|style|children)$/]",
+        "message": "<FeedItem> doesn't accept that prop. Declared props: number, name, stack, title, href, size, ratio, cover, index, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='FilterPill'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|active|onClick|className|style|key|ref|className|style|children)$/]",
+        "message": "<FilterPill> doesn't accept that prop. Declared props: children, active, onClick, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Footer'] > JSXAttribute > JSXIdentifier[name!=/^(?:line|contacts|cta|ctaHref|className|style|key|ref|className|style|children)$/]",
+        "message": "<Footer> doesn't accept that prop. Declared props: line, contacts, cta, ctaHref, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Header'] > JSXAttribute > JSXIdentifier[name!=/^(?:mark|filters|active|onFilter|count|href|className|style|key|ref|className|style|children)$/]",
+        "message": "<Header> doesn't accept that prop. Declared props: mark, filters, active, onFilter, count, href, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Hero'] > JSXAttribute > JSXIdentifier[name!=/^(?:lead|caption|strap|second|media|mediaSize|wordmark|className|style|key|ref|className|style|children)$/]",
+        "message": "<Hero> doesn't accept that prop. Declared props: lead, caption, strap, second, media, mediaSize, wordmark, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Meta'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|mono|tone|as|className|style|key|ref|className|style|children)$/]",
+        "message": "<Meta> doesn't accept that prop. Declared props: children, mono, tone, as, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Meta'] > JSXAttribute[name.name='tone'] > Literal[value!=/^(?:meta|ink|inactive|inverse)$/]",
+        "message": "<Meta> tone must be one of 'meta' | 'ink' | 'inactive' | 'inverse'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='MetaRow'] > JSXAttribute > JSXIdentifier[name!=/^(?:number|name|stack|className|style|key|ref|className|style|children)$/]",
+        "message": "<MetaRow> doesn't accept that prop. Declared props: number, name, stack, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='NextCase'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|number|title|href|className|style|key|ref|className|style|children)$/]",
+        "message": "<NextCase> doesn't accept that prop. Declared props: label, number, title, href, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='PillButton'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|href|inverse|className|style|key|ref|className|style|children)$/]",
+        "message": "<PillButton> doesn't accept that prop. Declared props: children, href, inverse, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Plinth'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|className|style|key|ref|className|style|children)$/]",
+        "message": "<Plinth> doesn't accept that prop. Declared props: children, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='RenderPlaceholder'] > JSXAttribute > JSXIdentifier[name!=/^(?:ratio|size|label|className|style|key|ref|className|style|children)$/]",
+        "message": "<RenderPlaceholder> doesn't accept that prop. Declared props: ratio, size, label, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Reveal'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|index|as|className|style|key|ref|className|style|children)$/]",
+        "message": "<Reveal> doesn't accept that prop. Declared props: children, index, as, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Rule'] > JSXAttribute > JSXIdentifier[name!=/^(?:className|style|key|ref|className|style|children)$/]",
+        "message": "<Rule> doesn't accept that prop. Declared props: className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Wordmark'] > JSXAttribute > JSXIdentifier[name!=/^(?:text|ghost|as|className|style|key|ref|className|style|children)$/]",
+        "message": "<Wordmark> doesn't accept that prop. Declared props: text, ghost, as, className, style."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {
+      "CaseBlock": {
+        "replaces": []
+      },
+      "CaseShots": {
+        "replaces": []
+      },
+      "FeedItem": {
+        "replaces": []
+      },
+      "FilterPill": {
+        "replaces": []
+      },
+      "Footer": {
+        "replaces": []
+      },
+      "Header": {
+        "replaces": []
+      },
+      "Hero": {
+        "replaces": []
+      },
+      "Meta": {
+        "replaces": []
+      },
+      "MetaRow": {
+        "replaces": []
+      },
+      "NextCase": {
+        "replaces": []
+      },
+      "PillButton": {
+        "replaces": []
+      },
+      "Plinth": {
+        "replaces": []
+      },
+      "RenderPlaceholder": {
+        "replaces": []
+      },
+      "Reveal": {
+        "replaces": []
+      },
+      "Rule": {
+        "replaces": []
+      },
+      "Wordmark": {
+        "replaces": []
+      }
+    },
+    "tokens": [
+      "--bg-inverse",
+      "--bg-page",
+      "--border-control",
+      "--border-hairline",
+      "--feed-gap",
+      "--feed-gap-compact",
+      "--font-body",
+      "--font-display",
+      "--font-grotesk",
+      "--font-mono",
+      "--grid-columns",
+      "--grid-gutter",
+      "--hairline",
+      "--header-height",
+      "--lh-body",
+      "--lh-display",
+      "--lh-feed-title",
+      "--lh-h1",
+      "--lh-meta",
+      "--ls-display",
+      "--ls-meta",
+      "--ls-nav",
+      "--measure-text",
+      "--motion-duration",
+      "--motion-ease",
+      "--motion-offset",
+      "--motion-stagger",
+      "--page-side",
+      "--page-side-compact",
+      "--pf-feed-gap",
+      "--pf-gray-inactive",
+      "--pf-gray-meta",
+      "--pf-ink",
+      "--pf-ink-ghost",
+      "--pf-line",
+      "--pf-plinth",
+      "--pf-plinth-pad",
+      "--pf-render",
+      "--pf-side",
+      "--pf-white",
+      "--plinth-pad",
+      "--plinth-pad-compact",
+      "--radius",
+      "--radius-pill",
+      "--space-1",
+      "--space-2",
+      "--space-3",
+      "--space-4",
+      "--space-5",
+      "--space-6",
+      "--space-7",
+      "--space-8",
+      "--surface-plinth",
+      "--surface-render",
+      "--text-ghost-on-inverse",
+      "--text-inactive",
+      "--text-meta",
+      "--text-on-inverse",
+      "--text-primary",
+      "--type-body",
+      "--type-display",
+      "--type-feed-title",
+      "--type-h1-case",
+      "--type-meta",
+      "--type-nav",
+      "--weight-body",
+      "--weight-display",
+      "--weight-feed-title",
+      "--wordmark-ratio"
+    ],
+    "tokenKinds": {
+      "--pf-white": "color",
+      "--pf-ink": "color",
+      "--pf-gray-meta": "color",
+      "--pf-gray-inactive": "color",
+      "--pf-line": "color",
+      "--pf-plinth": "color",
+      "--pf-render": "color",
+      "--pf-ink-ghost": "color",
+      "--bg-page": "color",
+      "--bg-inverse": "color",
+      "--text-primary": "font",
+      "--text-meta": "font",
+      "--text-inactive": "font",
+      "--text-on-inverse": "font",
+      "--text-ghost-on-inverse": "font",
+      "--border-hairline": "color",
+      "--border-control": "color",
+      "--surface-plinth": "color",
+      "--surface-render": "color",
+      "--font-mono": "font",
+      "--font-grotesk": "font",
+      "--font-display": "font",
+      "--font-body": "font",
+      "--type-display": "font",
+      "--type-h1-case": "font",
+      "--type-feed-title": "font",
+      "--type-body": "font",
+      "--type-meta": "font",
+      "--type-nav": "font",
+      "--lh-display": "font",
+      "--lh-h1": "font",
+      "--lh-feed-title": "font",
+      "--lh-body": "font",
+      "--lh-meta": "font",
+      "--ls-display": "spacing",
+      "--ls-meta": "spacing",
+      "--ls-nav": "spacing",
+      "--weight-body": "font",
+      "--weight-feed-title": "font",
+      "--weight-display": "font",
+      "--measure-text": "font",
+      "--wordmark-ratio": "other",
+      "--space-1": "spacing",
+      "--space-2": "spacing",
+      "--space-3": "spacing",
+      "--space-4": "spacing",
+      "--space-5": "spacing",
+      "--space-6": "spacing",
+      "--space-7": "spacing",
+      "--space-8": "spacing",
+      "--grid-columns": "other",
+      "--grid-gutter": "spacing",
+      "--page-side": "spacing",
+      "--page-side-compact": "spacing",
+      "--header-height": "spacing",
+      "--feed-gap": "spacing",
+      "--feed-gap-compact": "spacing",
+      "--plinth-pad": "spacing",
+      "--plinth-pad-compact": "spacing",
+      "--hairline": "spacing",
+      "--radius": "radius",
+      "--radius-pill": "radius",
+      "--motion-duration": "other",
+      "--motion-ease": "other",
+      "--motion-offset": "spacing",
+      "--motion-stagger": "other",
+      "--pf-side": "color",
+      "--pf-plinth-pad": "spacing",
+      "--pf-feed-gap": "spacing"
+    },
+    "fontFamilies": [
+      "Golos Text",
+      "JetBrains Mono"
+    ]
+  }
+}

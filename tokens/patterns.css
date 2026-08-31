@@ -1,0 +1,137 @@
+/* Класс-слой рамы. Компоненты используют только эти классы и токены.
+   .pf — корневой контейнер экрана; container query даёт мобильную раскладку
+   без media queries, поэтому экран 390 корректно живёт внутри фрейма. */
+.pf{container-type:inline-size;container-name:pf;--pf-side:var(--page-side);--pf-plinth-pad:var(--plinth-pad);--pf-feed-gap:var(--feed-gap);background:var(--bg-page);color:var(--text-primary);font-family:var(--font-body);font-size:var(--type-body);line-height:var(--lh-body)}
+
+/* ——— примитивы ——— */
+.pf-bleed{padding-inline:var(--pf-side)}
+.pf-grid{display:grid;grid-template-columns:repeat(var(--grid-columns),1fr);column-gap:var(--grid-gutter);row-gap:var(--space-5);padding-inline:var(--pf-side)}
+.pf-rule{border:0;border-top:var(--hairline) solid var(--border-hairline);margin:0;width:100%}
+.pf-meta{font-family:var(--font-body);font-size:var(--type-meta);line-height:var(--lh-meta);letter-spacing:var(--ls-meta);text-transform:uppercase;color:var(--text-meta)}
+.pf-meta--mono{font-family:var(--font-mono);font-weight:500;letter-spacing:var(--ls-meta)}
+.pf-meta--ink{color:var(--text-primary)}
+.pf-meta--inactive{color:var(--text-inactive)}
+.pf-meta--inverse{color:var(--text-inactive)}
+.pf-text{font-family:var(--font-body);font-size:var(--type-body);line-height:var(--lh-body);max-width:var(--measure-text);text-wrap:pretty}
+
+/* вордмарк: ровно от края до края с учётом боковых полей, без искажения букв */
+.pf-wordmark{display:block;font-family:var(--font-mono);font-weight:var(--weight-display);text-transform:uppercase;letter-spacing:var(--ls-display);line-height:var(--lh-display);white-space:nowrap;margin-inline:var(--pf-side);font-size:calc((100cqw - 2 * var(--pf-side)) / var(--wordmark-ratio));text-indent:0.008em}
+.pf-wordmark--ghost{color:var(--text-ghost-on-inverse)}
+
+/* пилюли — единственный радиус в системе */
+.pf-pill{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);border-radius:var(--radius-pill);font-family:var(--font-body);font-size:var(--type-meta);letter-spacing:var(--ls-meta);text-transform:uppercase;padding:9px 16px;border:var(--hairline) solid transparent;color:var(--text-meta);white-space:nowrap;transition:color 160ms var(--motion-ease),border-color 160ms var(--motion-ease),opacity 160ms var(--motion-ease)}
+.pf-pill:hover{color:var(--text-primary)}
+.pf-pill[aria-pressed="true"],.pf-pill--active{border-color:var(--border-control);color:var(--text-primary)}
+.pf-pill:active{opacity:0.6}
+.pf-cta{display:inline-flex;align-items:center;gap:var(--space-2);border-radius:var(--radius-pill);border:var(--hairline) solid currentColor;font-family:var(--font-body);font-size:13px;letter-spacing:0.02em;padding:14px 26px;transition:opacity 160ms var(--motion-ease)}
+.pf-cta:hover{opacity:0.6}
+.pf-cta:active{opacity:0.45}
+.pf-cta--inverse{color:var(--text-on-inverse)}
+
+/* плита: рендер никогда не лежит прямо на белом */
+.pf-plinth{background:var(--surface-plinth);padding:var(--pf-plinth-pad)}
+.pf-ph{background:var(--surface-render);display:flex;align-items:flex-end;justify-content:space-between;gap:var(--space-3);padding:var(--space-3);font-family:var(--font-mono);font-size:var(--type-meta);letter-spacing:var(--ls-meta);text-transform:uppercase;color:var(--text-inactive)}
+
+/* ——— мета-строка: главный повторяющийся элемент ——— */
+.pf-metarow{display:flex;justify-content:space-between;align-items:baseline;gap:var(--space-5);padding-bottom:var(--space-2);border-bottom:var(--hairline) solid var(--border-hairline)}
+.pf-metarow>*+*{text-align:right}
+@container pf (max-width:700px){.pf-metarow{flex-direction:column;align-items:flex-start;gap:var(--space-1)}.pf-metarow>*+*{text-align:left}}
+
+/* ——— хедер ——— */
+.pf-header{position:sticky;top:var(--space-3);z-index:20;height:var(--header-height);display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);padding-inline:var(--space-4);background:var(--bg-page);margin:var(--space-3) var(--pf-side);border-bottom:0}
+.pf-header:has(+ .pf-hero2 > .pf-hero2__media){margin-bottom:calc(-1 * (var(--header-height) + var(--space-3)))}
+.pf-hero2:not(:has(> .pf-hero2__media)) .pf-hero2__display{padding-top:var(--space-6)}
+.pf-header__mark{font-family:var(--font-mono);font-weight:500;font-size:var(--type-nav);letter-spacing:var(--ls-nav);text-transform:uppercase}
+.pf-filters{display:flex;align-items:center;gap:var(--space-1);margin-right:-8px;overflow-x:auto;scrollbar-width:none}
+.pf-filters::-webkit-scrollbar{display:none}
+
+/* ——— первый экран ——— */
+.pf-hero{padding-top:var(--space-7);padding-bottom:var(--space-6)}
+.pf-hero__mark{margin-top:var(--space-8)}
+.pf-hero__row{display:grid;grid-template-columns:repeat(var(--grid-columns),1fr);column-gap:var(--grid-gutter);row-gap:var(--space-5);padding-inline:var(--pf-side)}
+.pf-hero__lead{grid-column:1 / span 6}
+.pf-hero__meta{grid-column:10 / span 3;display:flex;flex-direction:column;gap:var(--space-1)}
+@container pf (max-width:700px){.pf-hero{padding-top:var(--space-6)}.pf-hero__mark{margin-top:var(--space-7)}.pf-hero__lead{grid-column:1 / -1}.pf-hero__meta{grid-column:1 / -1}}
+
+/* ——— лента ——— */
+.pf-feed{display:flex;flex-direction:column;gap:var(--pf-feed-gap)}
+.pf-feed__pair{display:grid;grid-template-columns:1fr 1fr;column-gap:var(--grid-gutter)}
+@container pf (max-width:700px){.pf-feed__pair{grid-template-columns:1fr;row-gap:var(--feed-gap-compact)}}
+.pf-item{display:flex;flex-direction:column;gap:var(--space-4);padding-inline:var(--pf-side)}
+.pf-feed__pair .pf-item{padding-inline:0}
+.pf-feed__pair{padding-inline:var(--pf-side)}
+.pf-item__title{font-family:var(--font-body);font-weight:var(--weight-feed-title);font-size:var(--type-feed-title);line-height:var(--lh-feed-title);letter-spacing:-0.01em;max-width:24ch;text-wrap:pretty}
+.pf-item__link{display:flex;flex-direction:column;gap:var(--space-4)}
+.pf-item__link:hover{opacity:1}
+.pf-item__link:hover .pf-item__title{opacity:0.55}
+
+/* ——— страница кейса ——— */
+.pf-case-head{padding-top:var(--space-6);padding-bottom:var(--space-5)}
+.pf-case-h1{font-family:var(--font-mono);font-weight:var(--weight-display);text-transform:uppercase;font-size:var(--type-h1-case);line-height:var(--lh-h1);letter-spacing:var(--ls-display);max-width:22ch;padding-inline:var(--pf-side)}
+.pf-block{display:grid;grid-template-columns:repeat(var(--grid-columns),1fr);column-gap:var(--grid-gutter);row-gap:var(--space-3);padding:var(--space-5) var(--pf-side);border-top:var(--hairline) solid var(--border-hairline)}
+.pf-block__label{grid-column:1 / span 3}
+.pf-block__body{grid-column:7 / span 6}
+@container pf (max-width:700px){.pf-block{padding-block:var(--space-4)}.pf-block__label{grid-column:1 / -1}.pf-block__body{grid-column:1 / -1}}
+.pf-shots-gap{padding-block:var(--space-5)}
+.pf-shots{display:grid;grid-template-columns:1fr 1fr;column-gap:var(--grid-gutter);padding-inline:var(--pf-side)}
+@container pf (max-width:700px){.pf-shots{grid-template-columns:1fr;row-gap:var(--space-3)}}
+
+/* ——— переход к следующему кейсу ——— */
+.pf-next{display:flex;flex-direction:column;gap:var(--space-4);padding:var(--space-6) var(--pf-side) var(--space-8);border-top:var(--hairline) solid var(--border-hairline)}
+.pf-next__title{font-family:var(--font-mono);font-weight:var(--weight-display);text-transform:uppercase;font-size:clamp(24px,3.4vw,44px);line-height:var(--lh-h1);letter-spacing:var(--ls-display);max-width:26ch}
+@container pf (max-width:700px){.pf-next{padding-bottom:var(--space-6)}}
+
+/* ——— футер ——— */
+.pf-footer{background:var(--bg-inverse);color:var(--text-on-inverse);padding-top:var(--space-7);overflow:hidden}
+.pf-footer__line{font-family:var(--font-mono);font-weight:500;text-transform:uppercase;font-size:clamp(20px,2.6vw,36px);line-height:1.1;letter-spacing:var(--ls-display);max-width:30ch;padding-inline:var(--pf-side)}
+.pf-footer__row{display:flex;align-items:flex-end;justify-content:space-between;gap:var(--space-5);padding:var(--space-6) var(--pf-side) var(--space-7)}
+.pf-footer__contacts{display:flex;flex-direction:column;gap:var(--space-2)}
+.pf-footer a{color:var(--text-on-inverse)}
+.pf-footer a:hover{opacity:0.55}
+@container pf (max-width:700px){.pf-footer{padding-top:var(--space-6)}.pf-footer__row{flex-direction:column;align-items:flex-start;gap:var(--space-5);padding-block:var(--space-5) var(--space-6)}}
+
+/* ——— моушн: единственный эффект ——— */
+.pf-reveal{opacity:0;animation:pf-reveal var(--motion-duration) var(--motion-ease) both;animation-delay:calc(var(--pf-i,0) * var(--motion-stagger))}
+@media (prefers-reduced-motion:reduce){.pf-reveal{animation:none;opacity:1}}
+
+/* Компактная раскладка. Container query не может переопределить переменные на самом
+   контейнере, поэтому в мобильной ветке меняем конкретные свойства, а не токены. */
+@container pf (max-width:700px){
+.pf-bleed,.pf-grid,.pf-header,.pf-hero__row,.pf-item,.pf-feed__pair,.pf-case-h1,.pf-shots,.pf-footer__line{padding-inline:var(--page-side-compact)}
+.pf-block,.pf-next,.pf-footer__row{padding-inline:var(--page-side-compact)}
+.pf-feed__pair .pf-item{padding-inline:0}
+.pf-wordmark{margin-inline:var(--page-side-compact);font-size:calc((100cqw - 2 * var(--page-side-compact)) / var(--wordmark-ratio))}
+.pf-plinth{padding:var(--plinth-pad-compact)}
+.pf-feed{gap:var(--feed-gap-compact)}
+}
+
+/* ——— хедер: плавающая белая полоса над медиа ——— */
+.pf-header__mark{flex:none}
+.pf-filters{flex:1;display:flex;justify-content:center;align-items:center;gap:var(--space-4);overflow:visible;margin-right:0}
+.pf-header__count{flex:none;text-align:right}
+.pf-pill--plain{padding:4px 0;border-radius:0;border:0;text-transform:uppercase;font-size:var(--type-meta);letter-spacing:var(--ls-meta);white-space:nowrap}
+.pf-pill--plain[aria-pressed="true"]{border-radius:var(--radius-pill);border:var(--hairline) solid var(--border-control);padding:4px 12px}
+
+/* ——— первый экран v2: вертикальные волосяные линии, дисплей в две ступени ——— */
+.pf-hero2__media{position:relative;height:520px;background:var(--surface-render);background-size:cover;background-position:center;display:flex;align-items:flex-start;justify-content:space-between;gap:var(--space-3);padding:calc(var(--header-height) + var(--space-3) + var(--space-4)) var(--space-4) var(--space-4);font-family:var(--font-mono);font-size:var(--type-meta);letter-spacing:var(--ls-meta);text-transform:uppercase;color:var(--text-inactive)}
+.pf-hero2{position:relative;padding-top:0;padding-bottom:var(--space-6);background-image:repeating-linear-gradient(to right,transparent 0,transparent calc(25% - 1px),var(--border-hairline) calc(25% - 1px),var(--border-hairline) 25%);background-position:0 0;background-size:100% 100%}
+.pf-hero2__line2{margin-inline:var(--pf-side);margin-left:calc(25% + var(--space-4));display:block;font-family:var(--font-mono);font-weight:var(--weight-display);text-transform:uppercase;letter-spacing:var(--ls-display);line-height:var(--lh-display);white-space:nowrap;font-size:calc((72cqw - var(--pf-side)) / var(--wordmark-ratio))}
+.pf-hero2__display{position:relative;z-index:1;padding-top:0}
+.pf-hero2__media + .pf-hero2__display .pf-wordmark{margin-top:-0.58em}
+.pf-hero2__strap{display:flex;justify-content:space-between;gap:var(--space-4);padding:var(--space-3) var(--pf-side) 0}
+.pf-hero2__foot{display:grid;grid-template-columns:repeat(var(--grid-columns),1fr);column-gap:var(--grid-gutter);row-gap:var(--space-4);padding-inline:var(--pf-side);padding-top:var(--space-7)}
+.pf-hero2__caption{grid-column:1 / span 3}
+.pf-hero2__lead{grid-column:10 / span 3}
+.pf-hero2__lead .pf-text{max-width:none}
+
+@container pf (max-width:700px){
+.pf-header{grid-template-columns:1fr;row-gap:var(--space-3)}
+.pf-header__mark,.pf-filters,.pf-header__count{grid-column:1 / -1}
+.pf-filters{grid-template-columns:repeat(2,minmax(0,1fr))}
+.pf-header__count{justify-self:start;text-align:left}
+.pf-hero2{background-image:repeating-linear-gradient(to right,transparent 0,transparent calc(50% - 1px),var(--border-hairline) calc(50% - 1px),var(--border-hairline) 50%)}
+.pf-hero2__line2{margin-left:calc(25% + var(--space-2));font-size:calc((72cqw - var(--page-side-compact)) / var(--wordmark-ratio))}
+.pf-hero2__foot{padding-top:var(--space-6)}
+.pf-hero2__media{height:300px}
+.pf-hero2__caption,.pf-hero2__lead{grid-column:1 / -1}
+}

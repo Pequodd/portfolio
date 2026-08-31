@@ -1,0 +1,5 @@
+/* Webfonts. Оригинальных бинарников у системы нет — подобраны ближайшие
+   совпадения на Google Fonts с полной кириллицей:
+   JetBrains Mono — моноширинный гротеск (идентификаторы, дисплей)
+   Golos Text     — нейтральный гротеск (проза, подписи) */
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Golos+Text:wght@400;500;600&display=swap");

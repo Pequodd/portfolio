@@ -1,0 +1,29 @@
+:root{
+/* шаг спейсинга */
+--space-1:4px;
+--space-2:8px;
+--space-3:16px;
+--space-4:24px;
+--space-5:40px;
+--space-6:64px;
+--space-7:96px;
+--space-8:160px;
+
+/* сетка */
+--grid-columns:12; /* @kind other */
+--grid-gutter:24px;
+--page-side:40px;
+--page-side-compact:16px;
+
+/* ритм */
+--header-height:56px;
+--feed-gap:160px;
+--feed-gap-compact:72px;
+--plinth-pad:40px;
+--plinth-pad-compact:16px;
+
+/* формы */
+--hairline:1px;
+--radius:0;
+--radius-pill:999px;
+}
